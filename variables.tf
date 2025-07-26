@@ -18,4 +18,8 @@ variable "account_replication_type" {
 
 variable "prefix" {
   type = string
+  validation {
+    condition     = length(var.prefix) >= 1 && length(var.prefix) <= 22 && can(regex("^[a-zA-Z0-9]+$", var.prefix))
+    error_message = "Prefix must be 1-22 alphanumeric characters."
+  }
 }

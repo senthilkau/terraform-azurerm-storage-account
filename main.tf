@@ -1,8 +1,7 @@
 resource "azurerm_storage_account" "this" {
-  name = format(
-    "%ssa",
+  name = lower(
     substr(
-      lower(replace(replace(var.resource_group_name, "[^a-zA-Z0-9]", ""), "-", "")),
+      replace(var.prefix, "[^a-z0-9]", ""),
       0,
       20
     )
